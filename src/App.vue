@@ -38,17 +38,19 @@ const deleteNote = (note) => {
       </div>
 
       <div class="flex flex-wrap gap-6 my-14">
-        <div v-for="note in notes" :key="note.id" class="flex flex-col justify-between w-60 h-60 p-4 border dark:border-neutral-900 bg-gradient-to-br from-slate-100 text-slate-700 dark:from-neutral-900 dark:text-slate-400 rounded">
-          <div class="max-h-[80%] test overflow-y-scroll">
-            <p class="opacity-50">#{{ note.id }}</p>
-            <p class="">{{ note.text }}</p>
-          </div>
+        <TransitionGroup name="note">
+          <div v-for="note in notes" :key="note.id" class="flex flex-col justify-between w-60 h-60 p-4 border dark:border-neutral-900 bg-gradient-to-br from-slate-100 text-slate-700 dark:from-neutral-900 dark:text-slate-400 rounded">
+            <div class="max-h-[80%] test overflow-y-scroll">
+              <p class="opacity-50">#{{ note.id }}</p>
+              <p class="">{{ note.text }}</p>
+            </div>
 
-          <div class="flex justify-between items-center">
-            <p class="text-sm italic opacity-50">{{ note.date.toLocaleDateString("fr-FR") }}</p>
-            <button @click="deleteNote(note)" class="text-red-500 bg-transparent border border-red-500 hover:bg-gradient-to-br from-red-500 to-red-700 hover:text-red-100 w-fit px-2 rounded-full duration-150">delete</button>
+            <div class="flex justify-between items-center">
+              <p class="text-sm italic opacity-50">{{ note.date.toLocaleDateString("fr-FR") }}</p>
+              <button @click="deleteNote(note)" class="text-red-500 bg-transparent border border-red-500 hover:bg-gradient-to-br from-red-500 to-red-700 hover:text-red-100 w-fit px-2 rounded-full duration-150">delete</button>
+            </div>
           </div>
-        </div>
+        </TransitionGroup>
       </div>
     </div>
 
@@ -65,5 +67,22 @@ const deleteNote = (note) => {
 <style scoped>
 .test::-webkit-scrollbar {
   display: none;
+}
+
+/* Notes animations */
+.note-enter-from, 
+.note-leave-to {
+  opacity: 0;
+  transform: scale(.8);
+}
+
+.note-enter-active, 
+.note-move {
+  transition: all 0.5s ease;
+}
+
+.note-leave-active {
+  transition: all 0.5s ease;
+  position: absolute;
 }
 </style>
