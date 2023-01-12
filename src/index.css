@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .gradient {
+        @apply bg-gradient-to-br from-sky-400 to-blue-600;
+    }
+
+    .card_light {
+        @apply from-slate-100 text-slate-700 border;
+    }
+
+    .card_dark {
+        @apply from-neutral-900 text-slate-400 border-neutral-900;
+    }
+
+    .card_delete-btn {
+        @apply text-red-500 bg-transparent border border-red-500;
+    }
+
+    .card_delete-btn_hover {
+        @apply bg-gradient-to-br from-red-500 to-red-700 text-red-100;
+    }
+}

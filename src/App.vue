@@ -31,7 +31,7 @@ const deleteNote = (note) => {
   <main class="flex justify-center items-center">
     <div class="w-4/5 xl:w-2/4 mx-auto">
       <div class="flex justify-between items-center my-4">
-        <h1 class="bg-clip-text text-transparent bg-gradient-to-br from-sky-400 to-blue-600 text-3xl font-bold">My notes</h1>
+        <h1 class="bg-clip-text text-transparent gradient text-3xl font-bold">My notes</h1>
         <button @click="showModal = true" class="text-3xl font-bold focus:scale-90 hover:rotate-[360deg] duration-300">
           🖊️
         </button>
@@ -39,7 +39,7 @@ const deleteNote = (note) => {
 
       <div class="flex flex-wrap gap-6 my-14">
         <TransitionGroup name="note">
-          <div v-for="note in notes" :key="note.id" class="flex flex-col justify-between w-60 h-60 p-4 border dark:border-neutral-900 bg-gradient-to-br from-slate-100 text-slate-700 dark:from-neutral-900 dark:text-slate-400 rounded">
+          <div v-for="note in notes" :key="note.id" class="flex flex-col justify-between w-60 h-60 p-4 bg-gradient-to-br card_light dark:card_dark rounded">
             <div class="max-h-[80%] test overflow-y-scroll">
               <p class="opacity-50">#{{ note.id }}</p>
               <p class="">{{ note.text }}</p>
@@ -47,7 +47,7 @@ const deleteNote = (note) => {
 
             <div class="flex justify-between items-center">
               <p class="text-sm italic opacity-50">{{ note.date.toLocaleDateString("fr-FR") }}</p>
-              <button @click="deleteNote(note)" class="text-red-500 bg-transparent border border-red-500 hover:bg-gradient-to-br from-red-500 to-red-700 hover:text-red-100 w-fit px-2 rounded-full duration-150">delete</button>
+              <button @click="deleteNote(note)" class="card_delete-btn hover:card_delete-btn_hover w-fit px-2 rounded-full duration-150">delete</button>
             </div>
           </div>
         </TransitionGroup>
@@ -58,7 +58,7 @@ const deleteNote = (note) => {
       <div class="flex flex-col justify-center items-center">
         <textarea v-model.trim="newNote" @keypress.enter="addNote" name="note" id="note" class="font-medium w-80 h-80 p-4 outline-none bg-transparent"></textarea>
         <p v-if="errorMessage" class="text-red-500 mt-2">{{ errorMessage }}</p>
-        <button @click="addNote" class="my-4 mx-auto py-1 px-5 w-fit bg-gradient-to-br from-sky-400 to-blue-600 text-slate-100 rounded-full hover:saturate-150 duration-150">Create note</button>
+        <button @click="addNote" class="my-4 mx-auto py-1 px-5 w-fit gradient text-slate-100 rounded-full hover:saturate-150 duration-150">Create note</button>
       </div>
     </div>
   </main>
